@@ -1,6 +1,6 @@
 {
   "name": "caching-coffeeify",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A coffeeify version that caches previously compiled coffee-script to optimize the coffee-script compilation step.",
   "main": "caching-coffeeify.js",
   "scripts": {
