@@ -7,7 +7,7 @@ var coffee    =  require('coffee-script')
   , cache     =  {};
 
 function getHash(data) {
-  crypto
+  return crypto
     .createHash('md5')
     .update(data)
     .digest('hex');
