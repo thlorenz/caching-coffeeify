@@ -13,12 +13,14 @@
   "homepage": "https://github.com/thlorenz/caching-coffeeify",
   "dependencies": {
     "through": "~2.2.7",
-    "coffeeify": "git://github.com/thlorenz/coffeeify.git"
+    "coffee-script": "~1.6.2",
+    "convert-source-map": "~0.2.5"
   },
   "devDependencies": {
     "browserify": "~2.7.1",
     "tap": "~0.4.0",
-    "convert-source-map": "~0.2.5"
+    "convert-source-map": "~0.2.5",
+    "proxyquire": "~0.4.0"
   },
   "keywords": [],
   "author": {
