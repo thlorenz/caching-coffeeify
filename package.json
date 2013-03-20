@@ -1,0 +1,31 @@
+{
+  "name": "caching-coffeeify",
+  "version": "0.0.0",
+  "description": "A wrapper around coffeeify that caches previously compiled files to make things faster.",
+  "main": "caching-coffeeify.js",
+  "scripts": {
+    "test": "node-trap test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/thlorenz/caching-coffeeify.git"
+  },
+  "homepage": "https://github.com/thlorenz/caching-coffeeify",
+  "dependencies": {
+    "coffeeify": "~0.2.0"
+  },
+  "devDependencies": {
+    "trap": "~0.4.2",
+    "browserify": "~2.7.1"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Thorsten Lorenz",
+    "email": "thlorenz@gmx.de",
+    "url": "http://thlorenz.com"
+  },
+  "license": "MIT",
+  "engine": {
+    "node": ">=0.6"
+  }
+}
