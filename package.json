@@ -1,6 +1,6 @@
 {
   "name": "caching-coffeeify",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A coffeeify version that caches previously compiled coffee-script to optimize the coffee-script compilation step.",
   "main": "caching-coffeeify.js",
   "scripts": {
@@ -20,7 +20,16 @@
     "browserify": "~2.7.1",
     "tap": "~0.4.0"
   },
-  "keywords": [ "coffee-script", "browserify", "v2", "js", "plugin", "transform", "cache", "optimize" ],
+  "keywords": [
+    "coffee-script",
+    "browserify",
+    "v2",
+    "js",
+    "plugin",
+    "transform",
+    "cache",
+    "optimize"
+  ],
   "author": {
     "name": "Thorsten Lorenz",
     "email": "thlorenz@gmx.de",
