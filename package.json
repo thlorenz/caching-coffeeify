@@ -20,7 +20,7 @@
     "browserify": "~2.7.1",
     "tap": "~0.4.0"
   },
-  "keywords": [],
+  "keywords": [ "coffee-script", "browserify", "v2", "js", "plugin", "transform", "cache", "optimize" ],
   "author": {
     "name": "Thorsten Lorenz",
     "email": "thlorenz@gmx.de",
