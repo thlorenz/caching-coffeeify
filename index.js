@@ -39,6 +39,8 @@ module.exports = function (file) {
       try {
         cache[file] = { compiled: compile(file, data), hash: hash };
       } catch (error) {
+        error.file = file;
+        error.body = data;
         this.emit('error', error);
         return;
       }
