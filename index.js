@@ -36,8 +36,15 @@ module.exports = function (file) {
       , cached = cache[file];
 
     if (!cached || cached.hash !== hash) {
-      cache[file] = { compiled: compile(file, data), hash: hash };
-    }   
+      try {
+        cache[file] = { compiled: compile(file, data), hash: hash };
+      } catch (error) {
+        error.file = file;
+        error.body = data;
+        this.emit('error', error);
+        return;
+      }
+    }
 
     this.queue(cache[file].compiled);
     this.queue(null);
