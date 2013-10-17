@@ -23,7 +23,7 @@ test('transform adds sourcemap comment and uses cache on second time', function 
     fs.createReadStream(file)
         .pipe(transform(file))
         .pipe(through(write));
-    
+
     // second time
     fs.createReadStream(file)
         .pipe(transform(file))
@@ -40,7 +40,7 @@ test('transform adds sourcemap comment and uses cache on second time', function 
               sourceRoot: '',
               sources: [ file ],
               names: [],
-              mappings: ';AAAA;CAAA,CAAA,CAAA,IAAO,GAAK;CAAZ',
+              mappings: 'AAAA,CAAQ,EAAR,IAAO,GAAK',
               sourcesContent: [ 'console.log(require \'./bar.js\')\n' ] },
             'adds sourcemap comment including original source'
       );

@@ -1,10 +1,9 @@
 'use strict';
 
-var coffee    =  require('coffee-script') 
-  , convert   =  require('convert-source-map')
-  , through   =  require('through')
-  , crypto    =  require('crypto')
-  , cache     =  {};
+var coffeeify  =  require('coffeeify')
+  , crypto     =  require('crypto')
+  , through    =  require('through')
+  , cache      =  {};
 
 function getHash(data) {
   return crypto
@@ -13,40 +12,29 @@ function getHash(data) {
     .digest('hex');
 }
 
-function compile(file, data) {
-  var compiled = coffee.compile(data, { sourceMap: true, generatedFile: file, inline: true })
-    , comment = convert
-        .fromJSON(compiled.v3SourceMap)
-        .setProperty('sources', [ file ]) 
-        .toComment();
-
-  return compiled.js + '\n' + comment;
-}
-
 module.exports = function (file) {
-  if (!/\.coffee$/.test(file)) return through();
-    
-  var data = '';
-  return through(write, end);
-  
-  function write (buf) { data += buf; }
-  function end () {
+  if (!coffeeify.isCoffee(file)) return through();
 
+  var data = ''
+    , stream = through(write, end);
+
+  function write (buf) { data += buf; }
+  function end() {
     var hash = getHash(data)
       , cached = cache[file];
 
     if (!cached || cached.hash !== hash) {
-      try {
-        cache[file] = { compiled: compile(file, data), hash: hash };
-      } catch (error) {
-        error.file = file;
-        error.body = data;
-        this.emit('error', error);
-        return;
-      }
+      coffeeify.compile(file, data, function(error, result) {
+        if (error) stream.emit('error', error);
+        cache[file] = { compiled: result, hash: hash };
+        stream.queue(result);
+        stream.queue(null);
+      });
+    } else {
+      stream.queue(cache[file].compiled);
+      stream.queue(null);
     }
-
-    this.queue(cache[file].compiled);
-    this.queue(null);
   }
+
+  return stream;
 };
