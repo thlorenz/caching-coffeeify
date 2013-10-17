@@ -16,7 +16,7 @@
     "through": "~2.3.4"
   },
   "devDependencies": {
-    "browserify": "2.x",
+    "browserify": "~2.34.3",
     "coffee-script": "~1.6.2",
     "convert-source-map": "~0.2.5",
     "tap": "~0.4.0"
